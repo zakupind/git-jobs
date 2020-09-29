@@ -2,10 +2,9 @@ import { FAVOURITES_CHECK,
          ADD_FAVOURITE_VACANCY,
          DEL_FAVOURITE_VACANCY} from '../types';
 
-const favouritesState = {
-    countFavourites: 0,
-    favouritesList: []
-}
+const favouritesState = localStorage.length != 0 ? 
+                        JSON.parse(localStorage.getItem('reduxState')) :
+                        { favouritesList: [] }
 
 export function favouritesReducer(state = favouritesState, action) {
     switch(action.type) {
@@ -13,7 +12,7 @@ export function favouritesReducer(state = favouritesState, action) {
             return{...state, favouritesList: action.payload}
 
         case ADD_FAVOURITE_VACANCY:
-            return {...state, countFavourites: state.countFavourites + 1}
+            return {...state, favouritesList: state.favouritesList.push(action.payload)}
 
         case DEL_FAVOURITE_VACANCY:
             return {...state}

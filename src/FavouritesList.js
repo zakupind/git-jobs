@@ -6,7 +6,10 @@ import FavouritesItem from './Favourites Item'
 import { checkFavorites } from  './REDUX/action';
 
 class FavouritesList extends React.Component {
-    componentDidMount() {
+    // componentDidMount() {
+    //     this.props.checkFavorites()
+    // }
+    componentWillReceiveProps() {
         this.props.checkFavorites()
     }
 

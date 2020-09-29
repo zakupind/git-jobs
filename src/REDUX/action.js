@@ -53,9 +53,9 @@ export function checkFavorites() {
 }
 
 export function addFavourites(payload) {
-    localStorage.setItem(payload.id, JSON.stringify(payload));
     return {
-        type: ADD_FAVOURITE_VACANCY
+        type: ADD_FAVOURITE_VACANCY,
+        payload
     }
 }
 
