@@ -6,6 +6,8 @@ const host = 'localhost';
 const port = 7000;
 
 app.use(cors())
+app.options('*', cors())
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
 app.get('/api', (req, res) => {
   const {description, location, full_time} = req.query;
@@ -20,16 +22,12 @@ app.get('/api', (req, res) => {
     }
 }
 
-request(options, function (error, response, body) {
-//   console.error('error:', error); // Print the error if one occurred
-//   console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-//   console.log('body:', body); // Print the HTML for the Google homepage.
-    res.status(200).type('application/json')
-    res.send(body);
-});
-
-
+  request(options, function (error, response, body) {
+      res.status(200).type('application/json')
+      res.send(body);
+  });
 })
+
 app.listen(port, host, function() {
   console.log(`Server listens http://${host}:${port}`)
 })

@@ -6,21 +6,21 @@ import FavouritesItem from './Favourites Item'
 import { checkFavorites } from  './REDUX/action';
 
 class FavouritesList extends React.Component {
-    // componentDidMount() {
-    //     this.props.checkFavorites()
-    // }
-    componentWillReceiveProps() {
+
+    componentDidMount() {
         this.props.checkFavorites()
     }
 
     render() {
         return(
-            <div>
-                <h2>Избранное</h2>
-                <ul>
-                    {this.props.favouritesList.map(item => (
-                        <FavouritesItem key={item.id} {...item}/>
-                    ))}
+            <div className="favourites-list">
+                <h2 className="favourites-list__title">Избранное</h2>
+                <ul className="favourites-list__list">
+                    { this.props.favouritesList.length == 0 ? 
+                    <span>Нет избранных вакансий</span> :
+                    this.props.favouritesList.map(item => (
+                        <FavouritesItem key={item.id} {...item}/>))
+                    } 
                 </ul>
             </div>
         )

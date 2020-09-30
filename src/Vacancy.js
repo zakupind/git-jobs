@@ -32,9 +32,12 @@ class Vacancy extends React.Component {
     render() {
         return (
             <div className="vacancy-wrapper">
-                <div>
+                <div className="vacancy__title_wrapper">
                     <h2 className="vacancy__title"><a href={this.props.url}>{this.props.title}</a></h2>
-
+                    <div className="vacancy__favourites"
+                        onClick={() => this.addFavourites()}>
+                    <span>В избрынное</span>
+                </div>
                 </div>
                 <div className="vacancy__header">
                     <div className="vacancy__company_wrapper">
@@ -54,10 +57,6 @@ class Vacancy extends React.Component {
                           onClick={() => this.expandText()}>
                               {this.state.textAll ? 'скрыть' : 'ещё'}
                     </span>
-                </div>
-                <div className="vacancy__favourites"
-                        onClick={() => this.addFavourites(this.props.id)}>
-                    <span>В избрынное</span>
                 </div>
 
             </div>

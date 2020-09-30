@@ -1,3 +1,4 @@
+import { store } from './configStore';
 import { HANDLE_CHANGE_SEARCH,
          SUCCESS_SEARCH,
          FAVOURITES_CHECK,
@@ -38,12 +39,10 @@ export function checkFavorites() {
         let i = 0;
         while (i < count) {
             let key = localStorage.key(i);
-            let l = JSON.parse(localStorage.getItem(key));
+            let item = JSON.parse(localStorage.getItem(key));
             i++;
-            favourites.push(l)
+            favourites.push(item)
         } 
-    } else {
-        console.log('Нет избранных вакансий')
     }
 
     return {
@@ -53,6 +52,8 @@ export function checkFavorites() {
 }
 
 export function addFavourites(payload) {
+    localStorage.setItem(payload.id, JSON.stringify(payload));
+    
     return {
         type: ADD_FAVOURITE_VACANCY,
         payload
@@ -60,8 +61,10 @@ export function addFavourites(payload) {
 }
 
 export function delFavourites(key) {
-    localStorage.removeItem(key)
+    localStorage.removeItem(key);
+
     return {
-        type: DEL_FAVOURITE_VACANCY
+        type: DEL_FAVOURITE_VACANCY,
+        payload: key
     }
 }

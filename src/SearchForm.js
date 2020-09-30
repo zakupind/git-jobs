@@ -42,7 +42,8 @@ class Search extends React.Component {
                                onChange={this.handleChange}/>
 
                         <div className="check-fulltime">
-                            <input type="checkbox"
+                            <input className="check-fulltime__check"
+                                   type="checkbox"
                                    name="fullTime"
                                    onChange={this.handleChange}
                                    defaultChecked={this.props.fullTime}/>
@@ -51,7 +52,7 @@ class Search extends React.Component {
                         </div>
                     </div>
 
-                    <button>Найти</button>
+                    <button className="search__button">Найти</button>
                 </form>
             </div>
         )
