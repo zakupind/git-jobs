@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import FavouritesItem from './Favourites Item'
+import FavouritesItem from './FavouritesItem';
 
 import { checkFavorites } from  './REDUX/action';
 

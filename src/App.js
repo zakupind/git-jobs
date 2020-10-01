@@ -1,8 +1,7 @@
 import React from 'react';
 import FavouritesList from './FavouritesList';
 import SearchForm from './SearchForm';
-import VacancyList from './Vacancy list';
-
+import VacancyList from './Vacancylist';
 
 class App extends React.Component {
   render() {

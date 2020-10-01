@@ -13,7 +13,7 @@ export function favouritesReducer(state = favouritesState, action) {
             return {...state, favouritesList: action.payload}
 
         case ADD_FAVOURITE_VACANCY:
-                let check = state.favouritesList.some((element) => element.id == action.payload.id);
+                let check = state.favouritesList.some((element) => element.id === action.payload.id);
 
                 if (check){
                     return {...state} 
@@ -22,7 +22,7 @@ export function favouritesReducer(state = favouritesState, action) {
                 }
 
         case DEL_FAVOURITE_VACANCY:
-            return {...state, favouritesList: state.favouritesList.filter(item => item.id != action.payload)}
+            return {...state, favouritesList: state.favouritesList.filter(item => item.id !== action.payload)}
 
         default: return state
     }

@@ -22,6 +22,7 @@ a {
 .search-form-wrapper {
   width: 100%;
   display: flex;
+  margin-bottom: 15px;
 }
 
 .search-form {
@@ -79,12 +80,22 @@ a {
   cursor: pointer;
 }
 
+.search__button:focus {
+  outline: none;
+}
+
 .check-fulltime {
   width: 200px;
 }
 
 .check-fulltime__check {
   cursor: pointer;
+}
+
+.search__status {
+  font-size: 18px;
+  font-weight: bold;
+
 }
 
 .vacancy__header {
@@ -145,7 +156,7 @@ a {
 
 .description-text__hidden {
   overflow: hidden;
-  height: 45px;
+  height: 100px;
 }
 
 .description__button_hidden {
@@ -206,6 +217,12 @@ a {
   cursor: pointer;
 }
 
+.loader {
+  position: fixed;
+  left: 40%;
+  top: 20%;
+  align-items: center;
+}
 
 
 

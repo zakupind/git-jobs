@@ -2,51 +2,58 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import { handleChangeSearch,
-         searchSubmit } from './REDUX/action';
+import { searchSubmit,
+         searchNull } from './REDUX/action';
 
 class Search extends React.Component {
     constructor(props) {
         super(props);
 
-        this.handleChange = this.handleChange.bind(this);
-        this.submit = this.submit.bind(this);
+    this.state = {
+        description: '',
+        location: '',
+        fullTime: false
+        }
     }
 
     handleChange(event) {
         const { name, value } = event.target;
-        this.props.handleChangeSearch({name, value});
+        this.setState({[name]: value});
     }
 
     submit(event) {
         event.preventDefault();
-        this.props.searchSubmit(this.props.description, this.props.location, this.props.fullTime);
+        if (this.state.description === '' && this.state.location === '') {
+            this.props.searchNull();
+        } else {
+            this.props.searchSubmit(this.state);
+        }
     }
 
     render() {
         return(
             <div className="search-form-wrapper">
                 <form className="search-form"
-                      onSubmit={ this.submit }>
+                      onSubmit={(event) => this.submit(event)}>
                     <input className="search-form__query"
                            placeholder="Поисковый запрос"
                            name="description"
-                           value={this.props.description}
-                           onChange={this.handleChange}/>
+                           value={this.description}
+                           onChange={(event) => this.handleChange(event)}/>
                     
                     <div className="search-form__location_and_fulltime">
                         <input className="search-form__location"
                                placeholder="Город"
                                name="location"
-                               value={this.props.location}
-                               onChange={this.handleChange}/>
+                               value={this.location}
+                               onChange={(event) => this.handleChange(event)}/>
 
                         <div className="check-fulltime">
                             <input className="check-fulltime__check"
                                    type="checkbox"
                                    name="fullTime"
-                                   onChange={this.handleChange}
-                                   defaultChecked={this.props.fullTime}/>
+                                   onChange={(event) => this.handleChange(event)}
+                                   defaultChecked={this.fullTime}/>
 
                             <label>Только полный день</label>
                         </div>
@@ -66,8 +73,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-    handleChangeSearch,
-    searchSubmit
+    searchSubmit,
+    searchNull
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

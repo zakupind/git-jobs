@@ -11,11 +11,7 @@ class Vacancy extends React.Component {
             title: this.props.title,
             url: this.props.url,
             id: this.props.id
-
         }
-
-        this.addFavourites = this.addFavourites.bind(this);
-        this.expandText = this.expandText.bind(this);
     }
 
     addFavourites() {
@@ -30,6 +26,12 @@ class Vacancy extends React.Component {
     }
 
     render() {
+        const date = new Date(this.props.created_at).toLocaleString('ru', {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            timezone: 'UTC'
+        });
         return (
             <div className="vacancy-wrapper">
                 <div className="vacancy__title_wrapper">
@@ -49,10 +51,11 @@ class Vacancy extends React.Component {
                               href={this.props.company_url}>{this.props.company}</span>
                     </div>
                     <span>{this.props.location}</span>
-                    <span>{this.props.created_at}</span>
+                    <span>{date}</span>
                 </div>
                 <div>
-                    <p className={this.state.textAll ? 'vacancy__description' : "vacancy__description description-text__hidden"}>{this.props.description}</p>
+                    <div className={this.state.textAll ? 'vacancy__description' : "vacancy__description description-text__hidden"}
+                        dangerouslySetInnerHTML={{__html: this.props.description}}></div>
                     <span className="description__button_hidden"
                           onClick={() => this.expandText()}>
                               {this.state.textAll ? 'скрыть' : 'ещё'}

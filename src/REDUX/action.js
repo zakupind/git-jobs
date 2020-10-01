@@ -1,16 +1,10 @@
-import { store } from './configStore';
-import { HANDLE_CHANGE_SEARCH,
-         SUCCESS_SEARCH,
+import { SUCCESS_SEARCH,
+         ONLOAD_SEARCH,
+         NULL_SEARCH,
+         NOT_RESULT_SEARCH,
          FAVOURITES_CHECK,
          ADD_FAVOURITE_VACANCY,
-         DEL_FAVOURITE_VACANCY } from './types';
-
-export function handleChangeSearch(payload) {
-    return {
-        type: HANDLE_CHANGE_SEARCH,
-        payload
-    }
-};
+         DEL_FAVOURITE_VACANCY, } from './types';
 
 export function searchSuccess(payload) {
     return {
@@ -19,14 +13,38 @@ export function searchSuccess(payload) {
     }
 }
 
-export function searchSubmit(description, location, fullTime) {
-    const url = `http://localhost:7000/api?description=${description}&location=${location}&full_time=${fullTime}`;
+export function searchNull() {
+    return {
+        type: NULL_SEARCH
+    }
+}
+
+export function searchNotResult() {
+    return {
+        type: NOT_RESULT_SEARCH
+    }
+}
+
+export function searchOnload() {
+    return {
+        type: ONLOAD_SEARCH
+    }
+}
+
+export function searchSubmit(payload) {
+    const url = `http://localhost:7000/api?description=${payload.description}&location=${payload.location}&full_time=${payload.fullTime}`;
 
     return (dispatch) => {
+        dispatch(searchOnload())
         fetch(url)
         .then(response => response.ok ? response : Promise.reject(response))
         .then(response => response.json())
-        .then(response => dispatch(searchSuccess(response)))
+        .then(response => { if (response.length == 0) {
+                dispatch(searchNotResult())
+            } else {
+                dispatch(searchSuccess(response))
+            }
+        })
         .catch(console.log)
     }
 }
