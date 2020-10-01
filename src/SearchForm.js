@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { searchSubmit,
-         searchNull } from './REDUX/action';
+         searchNull } from './Redux/action';
 
 class Search extends React.Component {
     constructor(props) {
@@ -18,7 +18,12 @@ class Search extends React.Component {
 
     handleChange(event) {
         const { name, value } = event.target;
-        this.setState({[name]: value});
+        if (name === 'fullTime') {
+            this.setState({fullTime: !this.state.fullTime});
+            console.log(this.state.fullTime);
+        } else {
+            this.setState({[name]: value});
+        }
     }
 
     submit(event) {

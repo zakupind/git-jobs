@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import FavouritesItem from './FavouritesItem';
 
-import { checkFavorites } from  './REDUX/action';
+import { checkFavorites } from  './Redux/action';
 
 class FavouritesList extends React.Component {
 

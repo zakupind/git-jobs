@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import {addFavourites} from './REDUX/action';
+import {addFavourites} from './Redux/action';
 
 class Vacancy extends React.Component {
     constructor(props) {
@@ -32,6 +32,7 @@ class Vacancy extends React.Component {
             day: 'numeric',
             timezone: 'UTC'
         });
+        
         return (
             <div className="vacancy-wrapper">
                 <div className="vacancy__title_wrapper">

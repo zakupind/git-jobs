@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import close from './img/close.svg';
 
-import {delFavourites} from './REDUX/action';
+import {delFavourites} from './Redux/action';
 
 class FavouritesItem extends React.Component {
     render() {
