@@ -21,9 +21,9 @@ class Search extends React.Component {
 
   handleChange = (event) => {
     const { name, value } = event.target;
-    const { fullTime: fullTimeDes } = this.state;
+    // const { fullTime: fullTimeDes } = this.state;
     if (name === 'fullTime') {
-      this.setState({ fullTime: !fullTimeDes });
+      this.setState(({ fullTimeDes }) => ({ fullTime: !fullTimeDes }));
     } else {
       this.setState({ [name]: value });
     }

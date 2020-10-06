@@ -150,6 +150,11 @@ a {
   text-align: center;
 }
 
+.disable__button {
+  background-color: #7979b1b2;
+  cursor: default;
+}
+
 .vacancy__favourites:focus {
   outline: none;
 }

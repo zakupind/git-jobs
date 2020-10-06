@@ -10,17 +10,42 @@ class Vacancy extends React.Component {
     super(props);
     this.state = {
       textAll: false,
+      disableButton: false,
     };
   }
 
-  expandText = () => {
-    const { textAll } = this.state;
-    this.setState({ textAll: !textAll });
+  // eslint-disable-next-line react/sort-comp
+  funcDisableButton() {
+    this.setState({ disableButton: true });
+  }
+
+  componentDidMount() {
+    const { id } = this.props;
+
+    if (localStorage.getItem(id)) {
+      this.funcDisableButton();
+    }
+  }
+
+  expandText() {
+    const { textAll: textAlld } = this.state;
+    this.setState({ textAll: !textAlld });
+  }
+
+  clickButtonFavourite() {
+    const {
+      id,
+      title,
+      url,
+      addFavourites: addFav,
+    } = this.props;
+
+    addFav({ id, title, url });
+    this.funcDisableButton();
   }
 
   render() {
     const {
-      id,
       title,
       url,
       created_at: createdAt,
@@ -29,10 +54,9 @@ class Vacancy extends React.Component {
       company_url: companyUrl,
       location,
       description,
-      addFavourites: addFav,
     } = this.props;
 
-    const { textAll } = this.state;
+    const { textAll, disableButton } = this.state;
     const date = new Date(createdAt).toLocaleString('ru', {
       year: 'numeric',
       month: 'numeric',
@@ -45,11 +69,12 @@ class Vacancy extends React.Component {
         <div className="vacancy__title_wrapper">
           <h2 className="vacancy__title"><a href={url}>{title}</a></h2>
           <button
-            className="vacancy__favourites"
+            className={disableButton ? 'vacancy__favourites disable__button' : 'vacancy__favourites'}
             type="button"
-            onClick={() => addFav({ id, title, url })}
+            disabled={disableButton}
+            onClick={() => this.clickButtonFavourite()}
           >
-            В избрынное
+            В избранное
           </button>
         </div>
         <div className="vacancy__header">
