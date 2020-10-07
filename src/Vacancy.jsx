@@ -12,6 +12,8 @@ class Vacancy extends React.Component {
       textAll: false,
       disableButton: false,
     };
+
+    this.expandText = this.expandText.bind(this);
   }
 
   // eslint-disable-next-line react/sort-comp
@@ -28,8 +30,8 @@ class Vacancy extends React.Component {
   }
 
   expandText() {
-    const { textAll: textAlld } = this.state;
-    this.setState({ textAll: !textAlld });
+    // const { textAll: textAlld } = this.state;
+    this.setState({ textAll: !this.state.textAll });
   }
 
   clickButtonFavourite() {

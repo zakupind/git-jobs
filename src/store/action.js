@@ -9,6 +9,10 @@ import {
 } from './types';
 
 export function searchSuccess(payload) {
+  const isFavorites = { isFavorites: false };
+  payload.forEach((item) => {
+    Object.assign(item, isFavorites);
+  });
   return {
     type: SUCCESS_SEARCH,
     payload,
@@ -72,8 +76,14 @@ export function checkFavorites() {
   };
 }
 
+// export function sendFavorites(favouritesList) {
+//   favouritesList.forEach((item) => {
+//     localStorage.setItem(item.id, JSON.stringify(item));
+//   });
+// }
+
 export function addFavourites(payload) {
-  localStorage.setItem(payload.id, JSON.stringify(payload));
+  // localStorage.setItem(payload.id, JSON.stringify(payload));
 
   return {
     type: ADD_FAVOURITE_VACANCY,
@@ -82,7 +92,7 @@ export function addFavourites(payload) {
 }
 
 export function delFavourites(key) {
-  localStorage.removeItem(key);
+  // localStorage.removeItem(key);
   return {
     type: DEL_FAVOURITE_VACANCY,
     payload: key,

@@ -12,6 +12,14 @@ class FavouritesList extends React.Component {
     checkFavoritesAction();
   }
 
+  componentWillUnmount() {
+    console.log('no');
+    localStorage.setItem('acv', 'JSON.stringify(item))');
+    this.props.favouritesList.forEach((item) => {
+      localStorage.setItem(item.id, JSON.stringify(item));
+    });
+  }
+
   render() {
     const { favouritesList } = this.props;
     return (
