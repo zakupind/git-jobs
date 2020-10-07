@@ -10,23 +10,9 @@ class Vacancy extends React.Component {
     super(props);
     this.state = {
       textAll: false,
-      disableButton: false,
     };
 
     this.expandText = this.expandText.bind(this);
-  }
-
-  // eslint-disable-next-line react/sort-comp
-  funcDisableButton() {
-    this.setState({ disableButton: true });
-  }
-
-  componentDidMount() {
-    const { id } = this.props;
-
-    if (localStorage.getItem(id)) {
-      this.funcDisableButton();
-    }
   }
 
   expandText() {
@@ -43,7 +29,6 @@ class Vacancy extends React.Component {
     } = this.props;
 
     addFav({ id, title, url });
-    this.funcDisableButton();
   }
 
   render() {
@@ -56,9 +41,10 @@ class Vacancy extends React.Component {
       company_url: companyUrl,
       location,
       description,
+      isFavourite,
     } = this.props;
 
-    const { textAll, disableButton } = this.state;
+    const { textAll } = this.state;
     const date = new Date(createdAt).toLocaleString('ru', {
       year: 'numeric',
       month: 'numeric',
@@ -71,9 +57,9 @@ class Vacancy extends React.Component {
         <div className="vacancy__title_wrapper">
           <h2 className="vacancy__title"><a href={url}>{title}</a></h2>
           <button
-            className={disableButton ? 'vacancy__favourites disable__button' : 'vacancy__favourites'}
+            className={isFavourite ? 'vacancy__favourites disable__button' : 'vacancy__favourites'}
             type="button"
-            disabled={disableButton}
+            disabled={isFavourite}
             onClick={() => this.clickButtonFavourite()}
           >
             В избранное
@@ -131,14 +117,16 @@ Vacancy.propTypes = {
   created_at: PropTypes.string.isRequired,
   company: PropTypes.string.isRequired,
   company_logo: PropTypes.string,
-  company_url: PropTypes.string.isRequired,
+  company_url: PropTypes.string,
   location: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   addFavourites: PropTypes.func.isRequired,
+  isFavourite: PropTypes.bool,
 };
 
 Vacancy.defaultProps = {
   company_logo: noPhoto,
+  isFavourite: false,
 };
 
 export default connect(null, mapDispatchToProps)(Vacancy);

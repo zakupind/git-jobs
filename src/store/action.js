@@ -3,16 +3,11 @@ import {
   ONLOAD_SEARCH,
   NULL_SEARCH,
   NOT_RESULT_SEARCH,
-  FAVOURITES_CHECK,
   ADD_FAVOURITE_VACANCY,
   DEL_FAVOURITE_VACANCY,
 } from './types';
 
 export function searchSuccess(payload) {
-  const isFavorites = { isFavorites: false };
-  payload.forEach((item) => {
-    Object.assign(item, isFavorites);
-  });
   return {
     type: SUCCESS_SEARCH,
     payload,
@@ -56,35 +51,7 @@ export function searchSubmit(payload) {
   };
 }
 
-export function checkFavorites() {
-  const count = localStorage.length;
-  const favourites = [];
-
-  if (count !== 0) {
-    let i = 0;
-    while (i < count) {
-      const key = window.localStorage.key(i);
-      const item = JSON.parse(localStorage.getItem(key));
-      i += 1;
-      favourites.push(item);
-    }
-  }
-
-  return {
-    type: FAVOURITES_CHECK,
-    payload: favourites,
-  };
-}
-
-// export function sendFavorites(favouritesList) {
-//   favouritesList.forEach((item) => {
-//     localStorage.setItem(item.id, JSON.stringify(item));
-//   });
-// }
-
 export function addFavourites(payload) {
-  // localStorage.setItem(payload.id, JSON.stringify(payload));
-
   return {
     type: ADD_FAVOURITE_VACANCY,
     payload,
@@ -92,7 +59,6 @@ export function addFavourites(payload) {
 }
 
 export function delFavourites(key) {
-  // localStorage.removeItem(key);
   return {
     type: DEL_FAVOURITE_VACANCY,
     payload: key,
