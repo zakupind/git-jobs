@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import noPhoto from './img/noPhoto.jpg';
 import { addFavourites } from './store/action';
 
-class Vacancy extends React.Component {
+export class Vacancy extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

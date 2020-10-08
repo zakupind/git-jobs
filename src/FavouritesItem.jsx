@@ -6,7 +6,7 @@ import close from './img/close.svg';
 
 import { delFavourites } from './store/action';
 
-function FavouritesItem(props) {
+export function FavouritesItem(props) {
   const {
     url,
     title,
