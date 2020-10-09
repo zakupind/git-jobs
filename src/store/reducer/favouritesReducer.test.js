@@ -1,4 +1,4 @@
-import favouritesReducer, { favouritesState } from './favouritesReducer';
+import favouritesReducer from './favouritesReducer';
 import { addFavourites, delFavourites } from '../action';
 
 const addNotNewVacancies = {
@@ -81,4 +81,4 @@ it('Удаление из избранных', () => {
   expect(favouritesReducer(initialState,
     delFavourites('abcd-345-bca')))
     .toEqual(initialState);
-})
+});

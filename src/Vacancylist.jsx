@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Vacancy from './Vacancy';
 import Loader from './Loader';
 
-function VacancyList(props) {
+export function VacancyList(props) {
   const { isFetching, statusSearch, jobs, favouritesList } = props;
   return (
     <div>

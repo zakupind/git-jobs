@@ -1,11 +1,12 @@
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 
-import {FavouritesItem} from './FavouritesItem';
+import renderer from 'react-test-renderer';
+import { FavouritesItem } from './FavouritesItem';
 
-enzyme.configure({adapter: new Adapter()});
+enzyme.configure({ adapter: new Adapter() });
 
 describe('Тест компонента избранной вакансии', () => {
   let component, props;
@@ -15,7 +16,7 @@ describe('Тест компонента избранной вакансии', ()
       id: '3a591fde-815f-45e7-81e9-9781de9596a5',
       title: 'Applikasjonsutvikler med erfaring søkes til Stingray Marine Solutions',
       url: 'https://jobs.github.com/positions/3a591fde-815f-45e7-81e9-9781de9596a5',
-      delFavourite: jest.fn(),
+      delFavourites: () => {},
     };
 
     component = mount(<FavouritesItem key={props.id} {...props} />);
@@ -33,4 +34,16 @@ describe('Тест компонента избранной вакансии', ()
     const title = component.find('.favourites-item__title');
     expect(title.text()).toEqual(props.title);
   });
+
+  it('render FavouriteItem', () => {
+    const tree = renderer
+      .create(<FavouritesItem key={props.id} {...props} />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  // it('нажатие кнопки del', () => {
+  //   component.find('button').simulate('click');
+  //   expect(props.delFavourites).toHaveBeenCalled();
+  // });
 });

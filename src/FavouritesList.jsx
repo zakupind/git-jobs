@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 
 import FavouritesItem from './FavouritesItem';
 
-function FavouritesList(props) {
+export function FavouritesList(props) {
   const { favouritesList } = props;
   return (
     <div className="favourites-list">
       <h2 className="favourites-list__title">Избранное</h2>
       <ul className="favourites-list__list">
-        {favouritesList.length === 0
+        {Object.keys(favouritesList).length === 0
           ? <span>Нет избранных вакансий</span>
           : Object.keys(favouritesList).map((key) => (
             <FavouritesItem key={key} {...favouritesList[key]} />))}
@@ -24,7 +24,7 @@ const mapStateToProps = (state) => ({
 });
 
 FavouritesList.propTypes = {
-  favouritesList: PropTypes.objectOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+  favouritesList: PropTypes.objectOf(PropTypes.objectOf(PropTypes.string)),
 };
 
 export default connect(mapStateToProps)(FavouritesList);

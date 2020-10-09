@@ -16,8 +16,8 @@ export class Vacancy extends React.Component {
   }
 
   expandText() {
-    // const { textAll: textAlld } = this.state;
-    this.setState({ textAll: !this.state.textAll });
+    const { textAll: textAlld } = this.state;
+    this.setState({ textAll: !textAlld });
   }
 
   clickButtonFavourite() {
@@ -127,6 +127,7 @@ Vacancy.propTypes = {
 Vacancy.defaultProps = {
   company_logo: noPhoto,
   isFavourite: false,
+  company_url: '#',
 };
 
 export default connect(null, mapDispatchToProps)(Vacancy);

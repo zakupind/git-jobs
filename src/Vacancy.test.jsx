@@ -3,7 +3,8 @@ import enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 
-import {Vacancy} from './Vacancy';
+import { unmountComponentAtNode } from 'react-dom';
+import { Vacancy } from './Vacancy';
 
 enzyme.configure({adapter: new Adapter()});
 
@@ -28,6 +29,12 @@ describe('Тест компонента вакансии', () => {
     component = mount(<Vacancy {...props} />);
   });
 
+  // afterEach(() => {
+  //   unmountComponentAtNode(component);
+  //   component.remove();
+  //   component = null;
+  // });
+
   it('Проверка на render компонента', () => {
     expect(component).toBeTruthy();
   });
@@ -41,8 +48,13 @@ describe('Тест компонента вакансии', () => {
     expect(title.text()).toEqual(props.title);
   });
 
-  it('Проверка текста заголовка', () => {
-    const title = component.find('.vacancy__title');
-    expect(title.text()).toEqual(props.title);
+  it('Проверка текста описания', () => {
+    const title = component.find('.vacancy__description');
+    expect(title.text()).toEqual(props.description);
+  });
+
+  it('Проверка текста названия комании', () => {
+    const title = component.find('.vacancy__company_name');
+    expect(title.text()).toEqual(props.company);
   });
 });

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Тест компонента избранной вакансии render FavouriteItem 1`] = `
+<div
+  className="favourites-item-wrapper"
+>
+  <h4
+    className="favourites-item__title"
+  >
+    <a
+      href="https://jobs.github.com/positions/3a591fde-815f-45e7-81e9-9781de9596a5"
+    >
+      Applikasjonsutvikler med erfaring søkes til Stingray Marine Solutions
+    </a>
+  </h4>
+  <button
+    className="favourites-item__button_del"
+    onClick={[Function]}
+    type="button"
+  >
+    <img
+      alt="delete"
+      className="favourites-item__button_img_del"
+      src="close.svg"
+    />
+  </button>
+</div>
+`;
