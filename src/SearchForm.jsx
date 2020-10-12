@@ -8,7 +8,7 @@ import {
   searchNull,
 } from './store/action';
 
-class Search extends React.Component {
+export class Search extends React.Component {
   constructor(props) {
     super(props);
 
@@ -19,14 +19,8 @@ class Search extends React.Component {
     };
   }
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    // const { fullTime: fullTimeDes } = this.state;
-    if (name === 'fullTime') {
-      this.setState(({ fullTimeDes }) => ({ fullTime: !fullTimeDes }));
-    } else {
-      this.setState({ [name]: value });
-    }
+  handleChange = () => {
+    this.setState({ fullTime: !this.state.fullTime });
   }
 
   submit = (event) => {
@@ -53,7 +47,7 @@ class Search extends React.Component {
             placeholder="Поисковый запрос"
             name="description"
             value={this.description}
-            onChange={this.handleChange}
+            onChange={(e) => { this.setState({ description: e.target.value })}}
           />
 
           <div className="search-form__location_and_fulltime">
@@ -62,7 +56,7 @@ class Search extends React.Component {
               placeholder="Город"
               name="location"
               value={this.location}
-              onChange={this.handleChange}
+              onChange={(e) => { this.setState({ location: e.target.value }) }}
             />
 
             <div className="check-fulltime">
@@ -72,7 +66,7 @@ class Search extends React.Component {
                   className="check-fulltime__check"
                   type="checkbox"
                   name="fullTime"
-                  onChange={this.handleChange}
+                  onClick={this.handleChange}
                   defaultChecked={this.fullTime}
                 />
                 Только полный день

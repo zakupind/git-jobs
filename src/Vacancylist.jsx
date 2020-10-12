@@ -40,7 +40,7 @@ VacancyList.propTypes = {
   jobs: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
   isFetching: PropTypes.bool.isRequired,
   statusSearch: PropTypes.string.isRequired,
-  favouritesList: PropTypes.objectOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+  favouritesList: PropTypes.objectOf(PropTypes.objectOf(PropTypes.objectOf(PropTypes.string))).isRequired,
 };
 
 export default connect(mapStateToProps)(VacancyList);

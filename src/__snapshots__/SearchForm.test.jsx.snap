@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`тест формы поиска общие тесты snapshot search 1`] = `
+<div
+  className="search-form-wrapper"
+>
+  <form
+    className="search-form"
+    onSubmit={[Function]}
+  >
+    <input
+      className="search-form__query"
+      name="description"
+      onChange={[Function]}
+      placeholder="Поисковый запрос"
+    />
+    <div
+      className="search-form__location_and_fulltime"
+    >
+      <input
+        className="search-form__location"
+        name="location"
+        onChange={[Function]}
+        placeholder="Город"
+      />
+      <div
+        className="check-fulltime"
+      >
+        <label
+          htmlFor="fullTime"
+        >
+          <input
+            className="check-fulltime__check"
+            name="fullTime"
+            onClick={[Function]}
+            type="checkbox"
+          />
+          Только полный день
+        </label>
+      </div>
+    </div>
+    <button
+      className="search__button"
+      type="submit"
+    >
+      Найти
+    </button>
+  </form>
+</div>
+`;

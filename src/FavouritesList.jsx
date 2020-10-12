@@ -23,8 +23,8 @@ const mapStateToProps = (state) => ({
   favouritesList: state.favourites.favouritesList,
 });
 
-FavouritesList.propTypes = {
-  favouritesList: PropTypes.objectOf(PropTypes.objectOf(PropTypes.string)),
-};
+// FavouritesList.propTypes = {
+//   favouritesList: PropTypes.objectOf(PropTypes.objectOf(PropTypes.string)),
+// };
 
 export default connect(mapStateToProps)(FavouritesList);

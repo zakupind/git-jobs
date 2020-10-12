@@ -16,7 +16,7 @@ describe('Тест компонента избранной вакансии', ()
       id: '3a591fde-815f-45e7-81e9-9781de9596a5',
       title: 'Applikasjonsutvikler med erfaring søkes til Stingray Marine Solutions',
       url: 'https://jobs.github.com/positions/3a591fde-815f-45e7-81e9-9781de9596a5',
-      delFavourites: () => {},
+      delFavourites: jest.fn(),
     };
 
     component = mount(<FavouritesItem key={props.id} {...props} />);
@@ -42,8 +42,8 @@ describe('Тест компонента избранной вакансии', ()
     expect(tree).toMatchSnapshot();
   });
 
-  // it('нажатие кнопки del', () => {
-  //   component.find('button').simulate('click');
-  //   expect(props.delFavourites).toHaveBeenCalled();
-  // });
+  it('нажатие кнопки del', () => {
+    component.find('button').simulate('click');
+    expect(component.props().delFavourites.mock.calls.length).toBe(1);
+  });
 });
