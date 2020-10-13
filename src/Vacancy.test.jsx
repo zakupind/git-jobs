@@ -1,12 +1,10 @@
-import { shallow, mount } from 'enzyme';
-import enzyme from 'enzyme';
+import enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 
-import { unmountComponentAtNode } from 'react-dom';
 import { Vacancy } from './Vacancy';
 
-enzyme.configure({adapter: new Adapter()});
+enzyme.configure({ adapter: new Adapter() });
 
 describe('Тест компонента вакансии', () => {
   let component, props;
@@ -29,17 +27,11 @@ describe('Тест компонента вакансии', () => {
     component = mount(<Vacancy {...props} />);
   });
 
-  // afterEach(() => {
-  //   unmountComponentAtNode(component);
-  //   component.remove();
-  //   component = null;
-  // });
-
   it('Проверка на render компонента', () => {
     expect(component).toBeTruthy();
   });
 
-  it('', () => {
+  it('Проверка пришли ли пропсы', () => {
     expect(component.props()).toEqual(props);
   });
 
@@ -49,12 +41,12 @@ describe('Тест компонента вакансии', () => {
   });
 
   it('Проверка текста описания', () => {
-    const title = component.find('.vacancy__description');
-    expect(title.text()).toEqual(props.description);
+    const description = component.find('.vacancy__description');
+    expect(description.text()).toEqual(props.description);
   });
 
   it('Проверка текста названия комании', () => {
-    const title = component.find('.vacancy__company_name');
-    expect(title.text()).toEqual(props.company);
+    const companyName = component.find('.vacancy__company_name');
+    expect(companyName.text()).toEqual(props.company);
   });
 });

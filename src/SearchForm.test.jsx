@@ -1,6 +1,5 @@
-import { shallow, mount } from 'enzyme';
+import enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
-import enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Тест листа вакансий render VacancyList 1`] = `
+<div>
+  <div>
+    <span
+      className="search__status"
+    >
+      Текст статуса
+    </span>
+    <ul>
+      <Connect(Vacancy)
+        company="Redbrick"
+        company_logo="https://jobs.github.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTZMIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bfcf8205463e2bed0526f9ae61be3cd93d70e210/rdbrck-wordmark.png"
+        company_url="https://rdbrck.com/"
+        created_at="Thu Oct 08 20:48:37 UTC 2020"
+        description="<p>Redbrick is the parent organization"
+        how_to_apply="<p>Please apply to the job link"
+        id="aaa7101b-6d63-4887-9e0c-1f2989c3cb36"
+        isFavourite={false}
+        key="aaa7101b-6d63-4887-9e0c-1f2989c3cb36"
+        location="Victoria, BC, Canada"
+        title="Senior Application Developer"
+        type="Full Time"
+        url="https://jobs.github.com/positions/aaa7101b-6d63-4887-9e0c-1f2989c3cb36"
+      />
+    </ul>
+  </div>
+</div>
+`;

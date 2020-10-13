@@ -1,15 +1,14 @@
-import { shallow, mount } from 'enzyme';
-import enzyme from 'enzyme';
+import enzyme, { shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 
-import renderer from 'react-test-renderer';
 import { FavouritesList } from './FavouritesList';
 
 enzyme.configure({ adapter: new Adapter() });
 
 describe('Тест компонента листа избранных вакансий', () => {
-  let component, props;
+  let component;
+  let props;
 
   beforeEach(() => {
     props = {
@@ -36,15 +35,7 @@ describe('Тест компонента листа избранных вакан
     expect(component).toBeTruthy();
   });
 
-  test('Проверка пришли ли пропсы', () => {
-    console.log(component.props());
-    expect(component.props().favouritesList).toBe(props.favouritesList.id1);
+  test('render FavouriteList', () => {
+    expect(component).toMatchSnapshot();
   });
-
-//   test('render FavouriteList', () => {
-//     const tree = renderer
-//       .create(<FavouritesList props />)
-//       .toJSON();
-//     expect(tree).toMatchSnapshot();
-//   });
 });

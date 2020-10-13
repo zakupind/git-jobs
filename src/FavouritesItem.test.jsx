@@ -1,5 +1,4 @@
-import { mount } from 'enzyme';
-import enzyme from 'enzyme';
+import enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 
@@ -9,7 +8,8 @@ import { FavouritesItem } from './FavouritesItem';
 enzyme.configure({ adapter: new Adapter() });
 
 describe('Тест компонента избранной вакансии', () => {
-  let component, props;
+  let component;
+  let props;
 
   beforeEach(() => {
     props = {

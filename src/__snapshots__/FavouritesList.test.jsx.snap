@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Тест компонента листа избранных вакансий render FavouriteList 1`] = `
+<div
+  className="favourites-list"
+>
+  <h2
+    className="favourites-list__title"
+  >
+    Избранное
+  </h2>
+  <ul
+    className="favourites-list__list"
+  >
+    <Connect(FavouritesItem)
+      id="id1"
+      key="id1"
+      title="title1"
+      url="url1"
+    />
+    <Connect(FavouritesItem)
+      id="id2"
+      key="id2"
+      title="title2"
+      url="url2"
+    />
+  </ul>
+</div>
+`;
