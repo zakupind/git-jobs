@@ -31,8 +31,8 @@ describe('тест формы поиска', () => {
 
   describe('ввод данных', () => {
     props = {
-      searchSubmit: () => {},
-      searchNull: () => {},
+      searchSubmit: jest.fn(),
+      searchNull: jest.fn(),
     };
 
     component = mount(<Search {...props} />);
@@ -61,10 +61,8 @@ describe('тест формы поиска', () => {
     });
 
     // test('button click', () => {
-    //   const submit = component.find('button');
-    //   submit.simulate('click');
-
-    //   expect(searchSubmit)
+    //   component.find('button').simulate('click');
+    //   expect(component.props().searchNull.mock.calls.length).toBe(1);
     // });
   });
 });

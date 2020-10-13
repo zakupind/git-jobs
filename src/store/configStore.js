@@ -14,7 +14,7 @@ const losalStorageOnState = localStorage.getItem('app') ? JSON.parse(localStorag
 export const store = createStore(
   rootReducer,
   losalStorageOnState,
-  compose(applyMiddleware(thunk, middleWareLocalStorage),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()),
+  compose(applyMiddleware(thunk, middleWareLocalStorage)),
+    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()),
 
 );
