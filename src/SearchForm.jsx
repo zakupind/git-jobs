@@ -19,7 +19,7 @@ export class Search extends React.Component {
     };
   }
 
-  handleChange = () => {
+  handleClick = () => {
     this.setState({ fullTime: !this.state.fullTime });
   }
 
@@ -28,7 +28,7 @@ export class Search extends React.Component {
     const { searchNull: searchNullAction, searchSubmit: searchSubmitAction } = this.props;
 
     event.preventDefault();
-    if (description === '' && location === '') {
+    if (!description && !location) {
       searchNullAction();
     } else {
       searchSubmitAction(this.state);
@@ -66,7 +66,7 @@ export class Search extends React.Component {
                   className="check-fulltime__check"
                   type="checkbox"
                   name="fullTime"
-                  onClick={this.handleChange}
+                  onClick={this.handleClick}
                   defaultChecked={this.fullTime}
                 />
                 Только полный день

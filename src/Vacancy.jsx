@@ -9,15 +9,15 @@ export class Vacancy extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      textAll: false,
+      textHidden: true,
     };
 
     this.expandText = this.expandText.bind(this);
   }
 
   expandText() {
-    const { textAll: textAlld } = this.state;
-    this.setState({ textAll: !textAlld });
+    const { textHidden } = this.state;
+    this.setState({ textHidden: !textHidden });
   }
 
   clickButtonFavourite() {
@@ -44,7 +44,7 @@ export class Vacancy extends React.Component {
       isFavourite,
     } = this.props;
 
-    const { textAll } = this.state;
+    const { textHidden } = this.state;
     const date = new Date(createdAt).toLocaleString('ru', {
       year: 'numeric',
       month: 'numeric',
@@ -88,7 +88,7 @@ export class Vacancy extends React.Component {
         </div>
         <div>
           <div
-            className={textAll ? 'vacancy__description' : 'vacancy__description description-text__hidden'}
+            className={textHidden ? 'vacancy__description description-text__hidden ' : 'vacancy__description'}
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: description }}
           />
@@ -97,7 +97,7 @@ export class Vacancy extends React.Component {
             type="button"
             onClick={this.expandText}
           >
-            {textAll ? 'скрыть' : 'ещё'}
+            {textHidden ? 'ещё' : 'скрыть'}
           </button>
         </div>
 
@@ -127,7 +127,6 @@ Vacancy.propTypes = {
 Vacancy.defaultProps = {
   company_logo: noPhoto,
   isFavourite: false,
-  company_url: '#',
 };
 
 export default connect(null, mapDispatchToProps)(Vacancy);

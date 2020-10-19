@@ -19,15 +19,7 @@ describe('Тест компонента избранной вакансии', ()
       delFavourites: jest.fn(),
     };
 
-    component = mount(<FavouritesItem key={props.id} {...props} />);
-  });
-
-  it('Проверка на render компонента', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('Проверка пришли ли пропсы', () => {
-    expect(component.props()).toEqual(props);
+    component = mount(<FavouritesItem {...props} />);
   });
 
   it('Проверка текста заголовка', () => {

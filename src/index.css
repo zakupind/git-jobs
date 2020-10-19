@@ -230,6 +230,9 @@ a {
 }
 
 .favourites-item__button_del {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color:rgb(190, 207, 207);
   padding: 5px;
   border: none;

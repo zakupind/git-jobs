@@ -33,11 +33,18 @@ export function searchOnload() {
 }
 
 export function searchSubmit(payload) {
-  const url = `http://localhost:7000/api?description=${payload.description}&location=${payload.location}&full_time=${payload.fullTime}`;
+  // const url = `http://localhost:7000/api?description=${payload.description}&location=${payload.location}&full_time=${payload.fullTime}`;
 
   return (dispatch) => {
     dispatch(searchOnload());
-    fetch(url)
+    const searchUrl = new URL('http://localhost:7000/api');
+    const params = {
+      description: payload.description,
+      location: payload.location,
+      full_time: payload.fullTime,
+    };
+    Object.keys(params).forEach((key) => searchUrl.searchParams.append(key, params[key]));
+    fetch(searchUrl)
       .then((response) => (response.ok ? response : Promise.reject(response)))
       .then((response) => response.json())
       .then((response) => {

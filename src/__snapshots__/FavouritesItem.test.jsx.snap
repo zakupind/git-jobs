@@ -19,10 +19,13 @@ exports[`Тест компонента избранной вакансии rende
     type="button"
   >
     <img
-      alt="delete"
+      alt="Убрать из избранного"
       className="favourites-item__button_img_del"
       src="close.svg"
     />
+    <span>
+      Удалить
+    </span>
   </button>
 </div>
 `;

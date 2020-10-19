@@ -17,8 +17,7 @@ export function VacancyList(props) {
               {jobs.map((job) => (
                 <Vacancy
                   key={job.id}
-                  //100% можно написать по другому
-                  isFavourite={favouritesList[job.id] ? true : false}
+                  isFavourite={Boolean(favouritesList[job.id])}
                   {...job}
                 />
               ))}
@@ -40,7 +39,7 @@ VacancyList.propTypes = {
   jobs: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
   isFetching: PropTypes.bool.isRequired,
   statusSearch: PropTypes.string.isRequired,
-  favouritesList: PropTypes.objectOf(PropTypes.objectOf(PropTypes.objectOf(PropTypes.string))).isRequired,
+  favouritesList: PropTypes.objectOf(PropTypes.objectOf(PropTypes.string)).isRequired,
 };
 
 export default connect(mapStateToProps)(VacancyList);
