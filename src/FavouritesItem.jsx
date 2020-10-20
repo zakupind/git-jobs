@@ -19,7 +19,7 @@ export function FavouritesItem(props) {
       <h4 className="favourites-item__title"><a href={url}>{title}</a></h4>
       <button className="favourites-item__button_del" type="button" onClick={() => delFav(id)}>
         <img className="favourites-item__button_img_del" alt="Убрать из избранного" src={close} />
-        <span>Удалить</span>
+        Удалить
       </button>
     </div>
   );
